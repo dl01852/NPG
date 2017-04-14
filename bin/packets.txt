@@ -1,0 +1,111 @@
+# Generic example packets to demonstrate npg.exe
+# Current documentation an examples located @ http://www.wikistc.org/wiki/Network_packet_generator
+
+# TCP/IP ICMP Echo Request
+[3,1000]
+<ICMP Echo Request>
+{
+# Ethernet HEADER -----
+
+  01 02 03 04 05 06  # Destination MAC
+  06 05 04 03 02 01  # Source MAC
+  08 00              # Protocol
+
+# IP HEADER -----------
+
+  45                 # Version / Header Length
+  00                 # Type of service
+  00 3c              # Total length
+  00 a5              # Identification
+  00 00              # Flags / Fragment offset
+  80                 # Time to live
+  01                 # Protocol
+  b8 c8              # Checksum
+  c0 a8 00 02        # Source address
+  c0 a8 00 01        # Destination address
+
+# ICMP HEADER ---------
+
+  08                 # Type
+  00                 # Code
+  4a 5c              # Checksum
+  02 00              # Identification
+  01 00              # Sequence number
+  61 62 63 64 65 66  # Data (Windows ping)
+  67 68 69 6a 6b 6c  
+  6d 6e 6f 70 71 72  
+  73 74 75 76 77 61  
+  62 63 64 65 66 67  
+  68 69
+}
+
+# TCP/IP ARP Reply
+<ARP Reply>[1,2000]{
+# Ethernet2 Header ---------
+
+ 01 02 03 04 05 06 # Destination MAC
+ 06 05 04 03 02 01 # Source MAC
+ 08 06             # Protocol
+
+# ARP Header ---------------
+
+ 00 01             # Hardware type
+ 08 00             # Protocol type
+ 06                # Hardware size
+ 04                # Protocol size
+ 00 02             # Opcode
+ 06 05 04 03 02 01 # Sender MAC address
+ c0 a8 00 02       # Send IP
+ 01 02 03 04 05 06 # Target MAC address
+ c0 a8 00 01       # Target IP
+
+# Ethernet2 (Trailer) ------
+
+ 00 00 00 00 00 00 # Trailer data
+ 00 00 00 00 00 00 
+ 00 00 00 00 00 00
+}
+
+#DNS Request
+[0,3000]
+<DNS Request>{
+# Ethernet2 Header ----
+
+ 01 02 03 04 05 06 # Destination MAC
+ 06 05 04 03 02 01 # Source MAC
+ 08 00             # Protocol
+
+# IP HEADER -----------
+
+ 45                 # Version / Header Length 
+ 00                 # Type of service
+ 00 39              # Total length 
+ 03 54              # Identifcation 
+ 00 00              # Flags / Fragment offset 
+ 80                 # Time to live 
+ 11                 # Protocol 
+ 76 b7              # Checksum 
+ c0 a8 00 01        # Source address
+ 00 00 00 00        # Destination address
+
+# UDP HEADER ----------
+
+ 04 05              # Source port
+ 00 35              # Destination port
+ 00 25              # Length
+ 2c 94              # Checksum
+
+# DNS HEADER ----------
+
+ 46 9c              # Transaction ID
+ 01 00              # Flags
+ 00 01              # Questions
+ 00 00              # Answer RRs
+ 00 00              # Authority RRs
+ 00 00              # Aditionla RRs
+ 07 77 69 6b 69     # Start Name
+ 73 74 63 03 6f     #
+ 72 67 00           # End Name
+ 00 01              # Type
+ 00 01              # Class
+}

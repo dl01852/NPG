@@ -1,0 +1,37 @@
+#ICMP Echo Request
+[3,1000]
+<ICMP Echo Request>
+{
+# Ethernet HEADER -----
+
+  00 0B DB 40 CE 33  # Destination MAC
+  00 13 20 11 5c 83  # Source MAC
+  08 00              # Protocol
+
+# IP HEADER -----------
+
+  45                 # Version / Header Length
+  00                 # Type of service
+  00 3c              # Total length
+  00 a5              # Identification
+  00 00              # Flags / Fragment offset
+  80                 # Time to live
+  01                 # Protocol
+  c0 2c              # Checksum
+  8d a5 d3 6b        # Source address
+  8d a5 d2 74        # Destination address
+
+# ICMP HEADER ---------
+
+  08                 # Type
+  00                 # Code
+  00 06              # Checksum
+  02 00              # Identification
+  01 00              # Sequence number
+  61 62 63 64 65 66  # Data (Windows ping)
+  67 68 69 6a 6b 6c  
+  6d 6e 6f 70 71 72  
+  73 74 75 76 77 61  
+  62 63 64 65 66 67  
+  68 69
+}

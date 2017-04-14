@@ -1,0 +1,29 @@
+# TCP/IP ARP Request
+<ARP request>   # Tags the packet with a name
+(rpcap://\Device\NPF_{1CCADEAC-9F88-492F-9734-C902CF67F7A4})  # device
+[10,1000]     # Number of times the packet is repeated and the delay between packets
+{
+# Ethernet2 Header --------- 14 bytes
+
+ FF FF FF FF FF FF # Destination MAC
+ D0 50 99 26 C2 4B # Source MAC 
+ 08 06             # Protocol
+
+# ARP Header --------------- 28 bytes
+
+ 00 01             # Hardware type
+ 08 00             # Protocol type  00=ARP
+ 06                # Hardware size
+ 04                # Protocol size
+ 00 01             # Opcode - 01=request  02=reply
+ D0 50 99 26 C2 4B # Sender MAC address
+ C0 A8 01 87       # Send IP (My Desktop IP Address)
+ 00 00 00 00 00 00 # Target MAC address - what we are trying to find
+ C0 A8 01 01       # Target IP - the IP corresponding to the MAC address we want to find
+
+# Ethernet2 (Trailer) ------ 18 bytes
+
+ 00 00 00 00 00 00 # Trailer data
+ 00 00 00 00 00 00 
+ 00 00 00 00 00 00
+}

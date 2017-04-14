@@ -1,0 +1,43 @@
+#DNS Request
+[0,3000]
+<DNS Request>{
+# Ethernet2 Header ----
+
+ 01 02 03 04 05 06 # Destination MAC
+ 06 05 04 03 02 01 # Source MAC
+ 08 00             # Protocol
+
+# IP HEADER -----------
+
+ 45                 # Version / Header Length 
+ 00                 # Type of service
+ 00 39              # Total length 
+ 03 54              # Identifcation 
+ 00 00              # Flags / Fragment offset 
+ 80                 # Time to live 
+ 11                 # Protocol 
+ 76 b7              # Checksum 
+ c0 a8 00 01        # Source address
+ 00 00 00 00        # Destination address
+
+# UDP HEADER ----------
+
+ 04 05              # Source port
+ 00 35              # Destination port
+ 00 25              # Length
+ 2c 94              # Checksum
+
+# DNS HEADER ----------
+
+ 46 9c              # Transaction ID
+ 01 00              # Flags
+ 00 01              # Questions
+ 00 00              # Answer RRs
+ 00 00              # Authority RRs
+ 00 00              # Aditionla RRs
+ 07 77 69 6b 69     # Start Name
+ 73 74 63 03 6f     #
+ 72 67 00           # End Name
+ 00 01              # Type
+ 00 01              # Class
+}

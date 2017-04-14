@@ -1,0 +1,37 @@
+#TCP SYN packet Request
+
+# Ethernet2 Header ----
+
+00 50 56 36 34 BA 	# Destination MAC  for desktop Mac
+D0 50 99 26 C2 4B  	# Source MAC 141.165.208.48
+ 08 00             	# Protocol (IP)
+
+# IP HEADER -----------
+
+ 45                     # Version / Header Length 
+ 00                     # Type of service
+ 00 34                  # Total length (IP header + payload)
+ 03 3b                  # Identification 
+ 00 00                  # Flags / Fragment offset 
+ 80                     # Time to live 
+ 06                     # Protocol (06=TCP)
+17 84                  # Header Checksum 
+ c0 a8 01 87            # Source address 192.168.1.135
+ 8d a5 d0 30            # Destination address 141.165.208.48
+
+# TCP HEADER ----------
+
+ ed 30                  # Source Port
+ 00 50	                # Destination port (port 80 http)
+ 3d 22 7a a0            # Sequence number (relative 0 - SYN packet)
+ 00 00 00 00            # Acknowledgement number
+ 80                     # Header length (32 bytes)/unused
+ 02                     # Flags (02 = SYN)
+ 20 00                  # Window size (8192)
+89 cd                  # Checksum - Options follow
+ 00 00                  # Urgent pointer
+ 02 04 05 b4            # Maximum segment size
+ 01                     # NOP
+ 03 03 02               # Window scale: 2 (multiply by 4)
+ 01 01                  # NOP
+ 04 02                  # SACK permitted

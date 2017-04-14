@@ -1,0 +1,13 @@
+Network Packet Generator 1.3.0
+Copyright (C) 2006 Jason Todd
+WikiSTC - http://www.wikistc.org/
+
+Attemping to auto detect network devices - Success.
+
+List of available devices:
+
+rpcap://\Device\NPF_{B38B86D2-99EE-4C35-A415-339734C00D3C}
+
+
+Example usage:
+npg -d rpcap://\Device\NPF_{B38B86D2-99EE-4C35-A415-339734C00D3C}

@@ -1,0 +1,26 @@
+# TCP/IP ARP Reply
+<ARP Reply>[10,1000]{
+# Ethernet2 Header ---------
+
+ 00 01 D2 69 37 DA # Destination MAC
+ 00 13 20 11 5C 83 # Source MAC
+ 08 06             # Protocol
+
+# ARP Header ---------------
+
+ 00 01             # Hardware type
+ 08 00             # Protocol type
+ 06                # Hardware size
+ 04                # Protocol size
+ 00 02             # Opcode
+ 06 05 04 03 02 01 # Sender MAC address
+ 8D A5 D3 6B       # Send IP 141.165.211.107
+ 00 01 02 69 37 DA # Target MAC address
+ 8D A5 D0 30       # Target IP 141.165.208.48
+
+# Ethernet2 (Trailer) ------
+
+ 00 00 00 00 00 00 # Trailer data
+ 00 00 00 00 00 00 
+ 00 00 00 00 00 00
+}

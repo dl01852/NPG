@@ -1,0 +1,58 @@
+[6/16/06] Version 1.0.1
+
+Added device listing compatible with the -d argument. Invoking this listing is done with the -l switch.
+Fixed CRC error in IP Header in packets.txt example
+Added example.bat for easier Windows Explorer execution of the example file packets.txt
+Fixed buffer overflow possibility by replacing scanf with fgets
+Updated examples in packets.txt
+
+[6/19/06] Version 1.0.2
+
+Added -S switch for separate timing interval function. -s will use the WinPcap version which is highly accurate but extremely cpu intensive. -S will use a npg function that is cpu easy and moderately accurate.
+
+[6/23/06] Version 1.1.0
+
+Removed WinPcap argument -s leaving only npg time interval injection
+Added ability to choose a separate device for each packet injected via packet file
+Changed time intervals to a single milliseconds value
+Added a PacketID field for each packet to display when it is injected for better user feedback during execution
+Minor changes to the way the packet file parser works
+Added checks for multiple declarations of time intervals, devices, and PacketID per packet
+Changed the order of checks with device selection and packet file, device check will not go into interactive if devices are declared for EVERY PACKET in the packet file.
+Added repeat counter for multiple injections of the same packet
+Added -w argument to display to currently installed version of the winPcap library
+
+[6/26/06] Version 1.1.1
+
+Added ability to specify more then one device per packet
+Started to clean and organize the cluttered source code, ParsePacketFile() still a mess
+Various minor fixes
+
+[6/28/06] Version 1.2.0
+
+Added -F libcap compatible binary file type for injection
+Corrected <CR> left over on file name selection function causing file not to be found
+Various minor fixes
+
+[6/29/06] Version 1.2.1
+
+Minor bug fixes
+Cleaned up the source files a bit
+
+
+[7/07/06] Version 1.3.0
+
+Corrected CRC in UDP Header potion of the DNS Request example
+Display argument list when invalid command line argument is attempted
+A > character is now a legal character inside of a < > packet ID bracket
+Added -t , -r , and -p arguments for command line injection without the use of a packet file
+Separated the file read and data parsing functions in the source code for easier audits and maintenance
+Fixed oversight with capital A-F values being invalid hex identifiers
+Added Error stop for lines that exceed the maximum read length on a packet file
+Removed artificial maximum packet size defined in npg
+Created npg@wikistc.org contact address for bug reports, comments, suggestions, etc
+Increased packet file read in line max length to 4096
+Fixed device bracket when declaring the same device twice it would treat it as a two separate devices and inject the packets accordingly.
+Changed the behavior of time intervals usage. If a -t is specified in conjunction with -p switch the time interval will be used. If a time interval is specified in a npg packet file, time intervals will automatically be used. Any packets in the same packet file with no defined time intervals will default to 0. The -s switch is now only viable with -F libpcap compatible file, or when a libpcap is selected in interactive mode.
+Added more informative display to the -? -h output
+Minor bug fixes
